@@ -91,6 +91,7 @@ header{
   width:50%;
   height:60%;
   min-height:350px;
+  min-width:1000px;
   /* max-width: 80%; */
 }
 
@@ -132,6 +133,7 @@ header{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  min-width:1000px;
   height:100%;
 }
 
@@ -141,20 +143,20 @@ header{
   width:45%;
   min-height:20%;
   max-height: 30%;
-  padding:10px;
+  padding:8px;
 }
 
 .cont{
   /* border: 2px solid red; */
   /* margin: 0 10% */
-  margin-left:40px;
+  margin-left:20px;
   display:flex;
   flex-direction: column;
 }
 
-.cont p{
+/* .cont p{
   font-size: 20px;
-}
+} */
 
 
 
