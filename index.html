@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap" rel="stylesheet"> 
+    <title>Maze Renderer</title>
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+    <script src="libraries/p5.min.js"></script>
+    <script src="sketch.js"></script>
+    <script src="maze.js"></script>
+    <script src="boundary.js"></script>
+    <script src="player.js"></script>
+    <script src="ray.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar">
+          <div class="brand-title">Maze Renderer</div>
+          <a href="#" class="toggle-button">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+          </a>
+          <a href="#" class="cross"></a>
+          <div class="links">
+              <ul>
+                  <li>
+                    <a href="#" onclick="openInNewTab(``)">
+                      <img src="./imgs/github.png" alt="README.md">
+                    </a>
+                  </li>
+                  <!-- <li><a href="#" onclick="openInNewTab(`https://courses.wesbos.com/account/access/6176958641ee9b1bad8de245/view/194130650`)">Wes Bos - JS Drumkit</a></li>
+                  <li><a href="#">Github profile</a></li> -->
+              </ul>
+          </div>
+      </nav>
+  </header>
+  <article>
+    <h1>Use Desktop/Laptop with a keyboard attached, and a modern browser for optimal experience :)</h1>
+  </article>
+  <div class="modal">
+    <div class="modal-header">
+      <div class="title">CONTROLS</div>
+      <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="control">
+        <img src="./imgs/up.gif" alt="Move Forward">
+        <div class="cont">
+          <h3>W (or) UP ARROW</h3>
+          <p>Move Forward</p>
+        </div>
+      </div>
+      <div class="control">
+        <img src="./imgs/left.gif" alt="Rotate Clockwise">
+        <div class="cont">
+          <h3>A (or) LEFT ARROW</h3>
+          <p>Rotate Anti-Clockwise</p>
+        </div>
+      </div>
+      <div class="control">
+        <img src="./imgs/down.gif" alt="Move Forward">
+        <div class="cont">
+          <h3>S (or) DOWN ARROW</h3>
+          <p>Move Backward</p>
+        </div>
+      </div>
+      <div class="control">
+        <img src="./imgs/right.gif" alt="Rotate Anti-Clockwise">
+        <div class="cont">
+          <h3>D (or) RIGHT ARROW</h3>
+          <p>Rotate Clockwise</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="active" id="overlay"></div>
+  
+  </body>
+</html>
