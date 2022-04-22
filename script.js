@@ -50,8 +50,9 @@ window.onload = function () {
         overlay.classList.remove('active')
     }
 
-    function openInNewTab(url) {
-        window.open(url, '_blank').focus();
-    }
+    
 }
 
+function openInNewTab(url) {
+    window.open(url, '_blank').focus();
+}
