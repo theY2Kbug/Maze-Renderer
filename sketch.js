@@ -194,7 +194,7 @@ function keyPressed(e){
       flag = true
     }
   }
-  if(key == 'd' || key == 'a'){
+  if(key == 'd' || key == 'a' || keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW)){
     if(angleFlag){
       angle = -30
       angleFlag = false
