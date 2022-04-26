@@ -2,9 +2,6 @@
 Maze renderer is a minimalistic implementation of the Wolfenstein 3D engine created using the p5.js library. The maze renderer can be split into two components, 
 the maze generation and rendering the boundaries seen within the view cone.
 
-This project was inspired by the tutorial series on <a href="https://thecodingtrain.com/CodingChallenges/145-2d-ray-casting.html">2D Raycasting</a> and 
-<a href="https://thecodingtrain.com/CodingChallenges/010.1-maze-dfs-p5.html">Maze Generation</a> by Daniel Shiffman
-
 ### Deployment
 https://they2kbug.github.io/Maze-Renderer/
 
@@ -35,6 +32,13 @@ For a detailed implementation of ray casting, refer to https://lodev.org/cgtutor
 
 ### Scope of future work
 <ul>
-  <li>Add support for mobile devices
-  <li>Optimize code to improve rendering frame rate without compromising viewcone ray angle resolution (current frame rate - 30FPS)
+  <li> Add support for mobile devices
+  <li> Optimize code to improve rendering frame rate without compromising on view cone ray-angle resolution (current frame rate - 30FPS)
+  <li> Explore other maze generation algorithms
+  <li> Add objectives and turn it into a short game
 </ul>
+
+##
+
+This project was inspired by the tutorial series on <a href="https://thecodingtrain.com/CodingChallenges/145-2d-ray-casting.html">2D Raycasting</a> and 
+<a href="https://thecodingtrain.com/CodingChallenges/010.1-maze-dfs-p5.html">Maze Generation</a> by Daniel Shiffman
