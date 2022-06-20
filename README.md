@@ -30,14 +30,6 @@ https://user-images.githubusercontent.com/76219678/164601499-64ef6dec-72b7-478d-
 
 For a detailed implementation of ray casting, refer to https://lodev.org/cgtutor/raycasting.html
 
-### Scope of future work
-<ul>
-  <li> Add support for mobile devices
-  <li> Optimize code to improve rendering frame rate without compromising on view cone ray-angle resolution (current frame rate - 30FPS)
-  <li> Explore other maze generation algorithms
-  <li> Add objectives and turn it into a short game
-</ul>
-
 ##
 
 This project was inspired by the tutorial series on <a href="https://thecodingtrain.com/CodingChallenges/145-2d-ray-casting.html">2D Raycasting</a> and 
