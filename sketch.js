@@ -13,7 +13,6 @@ let wall_conditions = []
 let walls = []
 let player_loc = []
 let player_square = []
-let flag = false
 let colors = ['#02FDA4','#2702FD' ] //,'#D8FD02'
 let color_random = new Array(301)
 function setup() {
@@ -24,9 +23,6 @@ function setup() {
   vpH = floor(windowHeight*0.92)
   canv = createCanvas(vpW, vpH);
   canv.position(windowWidth*0.02,windowHeight*0.075)
-  for(let i=0; i<301; i++){
-    color_random[i] = colors[floor(random(0,colors.length))]
-  }
   for(let i=50; i>=30; i--){
     if((vpW%i >=10 && vpW%i <= 40) && (vpH%i >= 10 && vpH%i <= 40)){
       width = i
@@ -158,23 +154,18 @@ function draw() {
 
   player.update(player_loc[1], player_loc[0])
   player.show()
-  let scene = player.look(walls)
-  let k = -30
-  scene = scene.map(x=> x*6*cos(radians(k-=0.2)))
+  let [scene,wall_shading] = player.look(walls)
   const w = wolfensteinW/scene.length
-  // console.log(scene.length)
   for(let i=0; i<scene.length; i++){
     wolfenstein.noStroke()
-    const sq = scene[i]*scene[i]
-    const wSq = (totalCols+1)*(totalCols+1)*width*width
-    const b = map(sq,0,wSq,255,0)
-    
-    const h = map(scene[i],0,(totalCols+1)*width,wolfensteinH*0.8,0)
-    if(flag){
-      wolfenstein.fill(color_random[i])
+    let h = width*wolfensteinH/scene[i];
+    if(h>wolfensteinH){
+      h = wolfensteinH;
     }
-    else{
-      wolfenstein.fill(b)
+    if(wall_shading[i] === 'h'){
+      wolfenstein.fill('#6082B6');
+    }else{
+      wolfenstein.fill('#7393B3');
     }
     wolfenstein.rectMode(CENTER)
     wolfenstein.rect(i*w + w/2, wolfensteinH/2 , w+1, h)
@@ -201,19 +192,3 @@ function keyPressed(e){
     }
   }
 }
-let x=1
-function mouseWheel(event){
-  x++
-  if(x%6 == 0){
-    if(flag){
-      flag = false
-    }
-    else{
-      flag = true
-    }
-    // console.log(flag)
-  }
-  
-}
-
-

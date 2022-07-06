@@ -9,7 +9,7 @@ class Player{
     }
 
     show(){
-        fill(50,150,255)    
+        fill('#f000ff')    
         noStroke()
         ellipse(this.pos.x,this.pos.y,16)
         fill(255)
@@ -29,6 +29,7 @@ class Player{
     }
     look(walls){
         const scene = []
+        const wall_shading = []
         for(let i=0; i<this.rays.length; i++){
             const ray = this.rays[i]
             let closest = null
@@ -46,11 +47,17 @@ class Player{
             }
             if(closest){
                 stroke(255, 255, 180 )
+                if(closest.x-Math.floor(closest.x) === 0){
+                    wall_shading[i] = 'v'
+                }
+                else{
+                    wall_shading[i] = 'h'
+                }
                 line(this.pos.x, this.pos.y, closest.x, closest.y)
                 
             }
             scene[i] = record
         }
-        return scene
+        return [scene,wall_shading]
     }
 }
