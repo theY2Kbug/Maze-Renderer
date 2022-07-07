@@ -1,34 +1,35 @@
-let vpW,vpH
-let canv,wolfenstein,wolfensteinW,wolfensteinH
-let start
-let totalRows,totalCols,ind
-let skipRows = 8
-let skipCols = 15
-let width
-let current
-let angle = 0
-let stack = []
-let boundaries = []
-let wall_conditions = []
-let walls = []
-let player_loc = []
-let player_square = []
-let colors = ['#02FDA4','#2702FD' ] //,'#D8FD02'
-let color_random = new Array(301)
+let vpW,vpH;
+let canv,wolfenstein,wolfensteinW,wolfensteinH;
+let start;
+let totalRows,totalCols,ind;
+let skipRows = 8;
+let skipCols = 15;
+let width;
+let current;
+let angle = 0;
+let flag = false;
+let stack = [];
+let boundaries = [];
+let wall_conditions = [];
+let walls = [];
+let player_loc = [];
+let player_square = [];
+let colors = ['#02FDA4','#2702FD' ]; //,'#D8FD02'
+let color_random = new Array(301);
 function setup() {
-  pixelDensity(1)
+  pixelDensity(1);
   // frameRate(60)
   background(0);
-  vpW = floor(windowWidth*0.96)
-  vpH = floor(windowHeight*0.92)
+  vpW = floor(windowWidth*0.96);
+  vpH = floor(windowHeight*0.92);
   canv = createCanvas(vpW, vpH);
-  canv.position(windowWidth*0.02,windowHeight*0.075)
+  canv.position(windowWidth*0.02,windowHeight*0.075);
   for(let i=50; i>=30; i--){
     if((vpW%i >=10 && vpW%i <= 40) && (vpH%i >= 10 && vpH%i <= 40)){
-      width = i
-      totalRows = floor(vpH/width)
-      totalCols = floor(vpW/width)
-      break
+      width = i;
+      totalRows = floor(vpH/width);
+      totalCols = floor(vpW/width);
+      break;
     }
   }
   wolfensteinW = width*16
@@ -155,6 +156,11 @@ function draw() {
   player.update(player_loc[1], player_loc[0])
   player.show()
   let [scene,wall_shading] = player.look(walls)
+  let k = 30.02;
+  scene = scene.map(x => {
+    k-=0.2;
+    return x*cos(radians(k))
+  })
   const w = wolfensteinW/scene.length
   for(let i=0; i<scene.length; i++){
     wolfenstein.noStroke()
@@ -179,10 +185,16 @@ function keyPressed(e){
   // console.log(e)
   if(key == 't'){
     if(flag){
-      flag = false
+      flag = false;
+      wolfensteinW = width*16;
+      wolfensteinH = width*9;
+      wolfenstein = createGraphics(wolfensteinW,wolfensteinH)
     }
     else{
-      flag = true
+      flag = true;
+      wolfensteinW = vpW;
+      wolfensteinH = vpH;
+      wolfenstein = createGraphics(wolfensteinW,wolfensteinH)
     }
   }
   if(key == 'd' || key == 'a' || keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW)){
