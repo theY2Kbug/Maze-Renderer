@@ -112,15 +112,15 @@ function draw() {
     xll = (player_square[1]-1)*width
   }
   if (keyIsDown(68) || keyIsDown(RIGHT_ARROW)){
-    player.rotate(1.5)
-    angle = (angle-1.5)%360
+    player.rotate(0.5)
+    angle = (angle-0.5)%360
   }
   else if(keyIsDown(65) || keyIsDown(LEFT_ARROW)){
-    player.rotate(-1.5)
-    angle = (angle+1.5)%360
+    player.rotate(-0.5)
+    angle = (angle+0.5)%360
   }
   if(keyIsDown(87) || keyIsDown(UP_ARROW)){ //w
-    player_loc[1] = player_loc[1]+(1*cos(radians(angle)))
+    player_loc[1] = player_loc[1]+(0.3*cos(radians(angle)))
     if(player_loc[1]<=(xll+8)){
       player_loc[1]=xll+8
     }
@@ -128,7 +128,7 @@ function draw() {
       player_loc[1]=xhl - 8
     }
     
-    player_loc[0] = player_loc[0]-(1*sin(radians(angle)))
+    player_loc[0] = player_loc[0]-(0.3*sin(radians(angle)))
     if(player_loc[0]<=(yll+8)){
       player_loc[0]=yll+8
     }
@@ -137,14 +137,14 @@ function draw() {
     }
   }
   else if(keyIsDown(83) || keyIsDown(DOWN_ARROW)){ //s
-    player_loc[1] = player_loc[1]-(1*cos(radians(angle)))
+    player_loc[1] = player_loc[1]-(0.3*cos(radians(angle)))
     if(player_loc[1]<=(xll+8)){
       player_loc[1]=xll+8
     }
     if(player_loc[1]>=(xhl-8)){
       player_loc[1]=xhl - 8
     }
-    player_loc[0] = player_loc[0]+(1*sin(radians(angle)))
+    player_loc[0] = player_loc[0]+(0.3*sin(radians(angle)))
     if(player_loc[0]<=(yll+8)){
       player_loc[0]=yll+8
     }
