@@ -24,6 +24,8 @@ Each ray is mapped to specific height, and the varying height difference generat
 
 https://user-images.githubusercontent.com/76219678/164601499-64ef6dec-72b7-478d-b9e6-abeb23d5677c.mp4
 
-`<b>` Note: `</b>` In this context "ray" refers to the distance  of each ray from the player (blue circle) to the closest boundary within FOV
+<b> Note: </b> In this context "ray" refers to the distance  of each ray from the player (blue circle) to the closest boundary within FOV
+
+##
 
 For a detailed implementation of ray casting, refer to https://lodev.org/cgtutor/raycasting.html
