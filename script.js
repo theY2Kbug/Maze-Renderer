@@ -21,7 +21,6 @@ window.onload = function () {
     
     overlay.addEventListener('click', ()=> {
         const modals = document.querySelectorAll('.modal')
-        // console.log(modals)
         modals.forEach(modal => {
             closeModal(modal)
         })
@@ -30,7 +29,6 @@ window.onload = function () {
     window.addEventListener('keydown', (e)=> {
         if(e.code == 'Escape'){
             const modals = document.querySelectorAll('.modal')
-            console.log(e.code)
             modals.forEach(modal => {
                 closeModal(modal)
             })

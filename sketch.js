@@ -16,6 +16,7 @@ let player_loc = [];
 let player_square = [];
 let colors = ['#02FDA4','#2702FD' ]; //,'#D8FD02'
 let color_random = new Array(301);
+const browser_chrome = ((window.navigator.userAgent.toLowerCase()).indexOf("firefox") > 0)? false:true;
 function setup() {
   pixelDensity(1);
   // frameRate(60)
@@ -112,15 +113,23 @@ function draw() {
     xll = (player_square[1]-1)*width
   }
   if (keyIsDown(68) || keyIsDown(RIGHT_ARROW)){
-    player.rotate(0.45)
-    angle = (angle-0.45)%360
+    player.rotate(0.4)
+    angle = (angle-0.4)%360
   }
   else if(keyIsDown(65) || keyIsDown(LEFT_ARROW)){
-    player.rotate(-0.45)
-    angle = (angle+0.45)%360
+    player.rotate(-0.4)
+    angle = (angle+0.4)%360
   }
   if(keyIsDown(87) || keyIsDown(UP_ARROW)){ //w
-    player_loc[1] = player_loc[1]+(0.2*cos(radians(angle)))
+    if(browser_chrome){
+      player_loc[1] = player_loc[1]+(0.4*cos(radians(angle)))
+      player_loc[0] = player_loc[0]-(0.4*sin(radians(angle)))
+    }
+    else{
+      player_loc[1] = player_loc[1]+(0.7*cos(radians(angle)))
+      player_loc[0] = player_loc[0]-(0.7*sin(radians(angle)))
+    }
+    
     if(player_loc[1]<=(xll+8)){
       player_loc[1]=xll+8
     }
@@ -128,7 +137,7 @@ function draw() {
       player_loc[1]=xhl - 8
     }
     
-    player_loc[0] = player_loc[0]-(0.2*sin(radians(angle)))
+    
     if(player_loc[0]<=(yll+8)){
       player_loc[0]=yll+8
     }
@@ -137,14 +146,20 @@ function draw() {
     }
   }
   else if(keyIsDown(83) || keyIsDown(DOWN_ARROW)){ //s
-    player_loc[1] = player_loc[1]-(0.2*cos(radians(angle)))
+    if(browser_chrome){
+      player_loc[1] = player_loc[1]-(0.4*cos(radians(angle)))
+      player_loc[0] = player_loc[0]+(0.4*sin(radians(angle)))
+    }
+    else{
+      player_loc[1] = player_loc[1]-(0.7*cos(radians(angle)))
+      player_loc[0] = player_loc[0]+(0.7*sin(radians(angle)))
+    }
     if(player_loc[1]<=(xll+8)){
       player_loc[1]=xll+8
     }
     if(player_loc[1]>=(xhl-8)){
       player_loc[1]=xhl - 8
     }
-    player_loc[0] = player_loc[0]+(0.2*sin(radians(angle)))
     if(player_loc[0]<=(yll+8)){
       player_loc[0]=yll+8
     }
@@ -156,25 +171,40 @@ function draw() {
   player.update(player_loc[1], player_loc[0])
   player.show()
   let [scene,wall_shading] = player.look(walls)
-  let k = 30.02;
+  let k = 30.1;
   scene = scene.map(x => {
-    k-=0.2;
+    k-=0.1;
     return x*cos(radians(k))
   })
   const w = wolfensteinW/scene.length
   for(let i=0; i<scene.length; i++){
     wolfenstein.noStroke()
-    let h = width*wolfensteinH/scene[i];
+
+    //Walls
+    let h = 0.95*width*wolfensteinH/scene[i];
     if(h>wolfensteinH){
       h = wolfensteinH;
     }
     if(wall_shading[i] === 'h'){
-      wolfenstein.fill('#6082B6');
+      wolfenstein.fill('#E84AA8');
     }else{
-      wolfenstein.fill('#7393B3');
+      wolfenstein.fill('#E21D93');
     }
     wolfenstein.rectMode(CENTER)
     wolfenstein.rect(i*w + w/2, wolfensteinH/2 , w+1, h)
+
+    //Ceiling
+    wolfenstein.fill('#4AE88A');
+    wolfenstein.rectMode(CORNER);
+    wolfenstein.rect(i*w, 0, w+1, (wolfensteinH-h)/2)
+
+    //Floor
+    wolfenstein.fill('#12A2ED');
+    wolfenstein.rectMode(CORNER);
+    wolfenstein.rect(i*w, (wolfensteinH+h)/2 , w+1, (wolfensteinH-h)/2)
+    // wolfenstein.fill('#41B5F1');
+    // wolfenstein.rectMode(CORNER);
+    // wolfenstein.rect(i*w, (wolfensteinH+h)/2 + wolfensteinH*0.07 , w+1, (wolfensteinH-h)/2 - wolfensteinH*0.07)
   }
   // console.log(getFrameRate())
   image(wolfenstein,0,0)

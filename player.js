@@ -3,7 +3,7 @@ class Player{
         this.pos = createVector(start[0], start[1])
         this.rays = []
         this.heading = 0
-        for(let a=-30; a<30; a+=0.2){
+        for(let a=-30; a<30; a+=0.1){
             this.rays.push(new Ray(this.pos, radians(a)))
         }
     }
@@ -20,7 +20,7 @@ class Player{
     rotate(angle){
         this.heading += angle
         for(let i=0; i<this.rays.length; i+=1){
-            this.rays[i].setAngle(radians((i*0.2)+this.heading))
+            this.rays[i].setAngle(radians((i*0.1)+this.heading))
         }
     }
 

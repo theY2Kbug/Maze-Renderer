@@ -51,7 +51,7 @@ header{
 }
 
 .links li:hover{
-  background-color: none;
+  background-color: transparent;
 }
 .links li a:hover{
   color:#000;
