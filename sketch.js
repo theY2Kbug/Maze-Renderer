@@ -113,21 +113,21 @@ function draw() {
     xll = (player_square[1]-1)*width
   }
   if (keyIsDown(68) || keyIsDown(RIGHT_ARROW)){
-    player.rotate(0.4)
-    angle = (angle-0.4)%360
+    player.rotate(0.8)
+    angle = (angle-0.8)%360
   }
   else if(keyIsDown(65) || keyIsDown(LEFT_ARROW)){
-    player.rotate(-0.4)
-    angle = (angle+0.4)%360
+    player.rotate(-0.8)
+    angle = (angle+0.8)%360
   }
   if(keyIsDown(87) || keyIsDown(UP_ARROW)){ //w
     if(browser_chrome){
-      player_loc[1] = player_loc[1]+(0.4*cos(radians(angle)))
-      player_loc[0] = player_loc[0]-(0.4*sin(radians(angle)))
+      player_loc[1] = player_loc[1]+(1*cos(radians(angle)))
+      player_loc[0] = player_loc[0]-(1*sin(radians(angle)))
     }
     else{
-      player_loc[1] = player_loc[1]+(0.7*cos(radians(angle)))
-      player_loc[0] = player_loc[0]-(0.7*sin(radians(angle)))
+      player_loc[1] = player_loc[1]+(1*cos(radians(angle)))
+      player_loc[0] = player_loc[0]-(1*sin(radians(angle)))
     }
     
     if(player_loc[1]<=(xll+8)){
@@ -181,7 +181,7 @@ function draw() {
     wolfenstein.noStroke()
 
     //Walls
-    let h = 0.95*width*wolfensteinH/scene[i];
+    let h = width*wolfensteinH/scene[i];
     if(h>wolfensteinH){
       h = wolfensteinH;
     }
